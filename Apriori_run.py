@@ -65,10 +65,10 @@ def data_preprocess(path):
             slope = 'slope{}'.format(line[10])
             ca = 'ca{}'.format(line[11])
             thal = 'thal{}'.format(line[12])
-            ill = 'ill' if not float(line[-1]) else 'health'
+            num = 'num=1' if float(line[-1]) else 'num=0'
 
             data_lines.append([age, gender, chest_pain, blood_pressure, chol, fbs, restecg,
-                               thalach, exang, slope, ca, thal, ill])
+                               thalach, exang, slope, ca, thal, num])
     f.close()
     return data_lines
 
@@ -78,10 +78,10 @@ if __name__ == '__main__':
     #     [1, 2, 5], [2, 3], [1, 2, 4], [1, 3],
     #     [2, 4], [2, 3], [1, 3], [1, 2, 3, 5], [1, 2, 3]
     # ]
-    min_support = 5
-    min_confidence = 30
-    dataset = data_load('./groceries.csv')
-    # dataset = data_preprocess('processed.cleveland.data')
+    min_support = 50
+    min_confidence = 70
+    # dataset = data_load('./groceries.csv')
+    dataset = data_preprocess('processed.cleveland.data')
 
     apriori_master = Apriori(dataset, min_support, min_confidence)
     apriori_master.apriori_solve()

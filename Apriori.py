@@ -127,7 +127,7 @@ class Apriori:
         print('===================================================')
         for itermsets_ind in range(1, len(self.AllFrequentItemsets)):
             itemsets = self.AllFrequentItemsets[itermsets_ind]
-            for sets_ind in range(len(itemsets)):
+            for sets_ind in range(len(itemsets[0])):
                 print('{}: {}'.format(itemsets[0][sets_ind], itemsets[1][sets_ind]))
         print('===================================================')
         print('All association rules generated:')
